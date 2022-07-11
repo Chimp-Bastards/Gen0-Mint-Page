@@ -555,7 +555,7 @@ const Home = (props: HomeProps) => {
       }
 
       <Box style={{
-        backgroundImage: matches ? "url(main_bg_mobile.png)" : "url(main_bg.png)",
+        backgroundImage: "url(main_bg.png)",
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
@@ -574,6 +574,32 @@ const Home = (props: HomeProps) => {
                     <Typography style={{ color: 'white', fontFamily: 'SPRAY LETTERS', fontSize: matches ? '16px' : '28px' }}>MINTED NFTS</Typography>
                     <Typography style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: matches ? '42px' : '64px', lineHeight: '100%' }}>{candyMachine && (`${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`)}</Typography>
                   </Box>
+                </Box>
+                <Box style={{ textAlign: 'center', marginTop: '170px' }}>
+                  <Typography style={{ color: 'white', fontFamily: 'SPRAY LETTERS', fontSize: '28px' }}>MINT PRICE</Typography>
+                  <Typography style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: '64px', lineHeight: '100%' }}>
+                    {candyMachine && (
+                      <>
+                        {
+                          isWhitelistUser && discountPrice
+                            ? `${formatNumber.asNumber(discountPrice)}$SOL`
+                            : `${formatNumber.asNumber(candyMachine.state.price)}$SOL`
+                        }
+                      </>
+                    )}
+                  </Typography>
+                  <Typography style={{ color: 'white', fontSize: '20px' }}>Excluding GAS FEES</Typography>
+
+                  <MintButton
+                    candyMachine={candyMachine}
+                    isMinting={isUserMinting}
+                    setIsMinting={val => setIsUserMinting(val)}
+                    onMint={onMint}
+                    isActive={
+                      isActive ||
+                      (isPresale && isWhitelistUser && isValidBalance)
+                    }
+                  />
                 </Box>
               </>
             ) : (

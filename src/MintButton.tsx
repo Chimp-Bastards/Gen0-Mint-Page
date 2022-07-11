@@ -17,6 +17,7 @@ import {
 export const CTAButton = styled(Button)`
   padding: 0px 4px;
   background-color: #ff5534;
+  color: 'white';
   margin: 8px 0px;
   font-size: 24px;
   font-weight: bold;
