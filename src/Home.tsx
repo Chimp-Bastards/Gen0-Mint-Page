@@ -10,6 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 import {
   Commitment,
   Connection,
@@ -55,6 +58,9 @@ export interface HomeProps {
 }
 
 const Home = (props: HomeProps) => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
   const [isUserMinting, setIsUserMinting] = useState(false);
   const [candyMachine, setCandyMachine] = useState<CandyMachineAccount>();
   const [alertState, setAlertState] = useState<AlertState>({
@@ -215,7 +221,7 @@ const Home = (props: HomeProps) => {
               cndy.state.endSettings.number.toNumber(),
               cndy.state.itemsAvailable,
             );
-            
+
             if (cndy.state.itemsRedeemed < limit) {
               setItemsRemaining(limit - cndy.state.itemsRedeemed);
             } else {
@@ -482,84 +488,137 @@ const Home = (props: HomeProps) => {
   return (
     <>
       <Box style={{ backgroundColor: '#3d3270' }}>
-        <Container style={{ maxWidth: '1329px', padding: '0px' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
-              <Box style={{ padding: '16px 12px' }}>
-                <img src={"head_logo.png"} />
+        {
+          matches ? (
+            <>
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Box style={{ padding: '12px 0px' }}>
+                  <img src={"head_logo.png"} width='28px' />
+                </Box>
+                <Box style={{ padding: '4px 12px', }}>
+                  <Typography style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '26px' }}>CHIMP BASTARDS</Typography>
+                </Box>
               </Box>
-              <Box style={{ padding: '12px 12px', }}>
-                <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>HOME</Button>
-              </Box>
-              <Box style={{ padding: '12px 12px', }}>
-                <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>MINTING</Button>
-              </Box>
-              <Box style={{ padding: '12px 12px', }}>
-                <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>STAKING</Button>
-              </Box>
-              <Box style={{ padding: '12px 12px', }}>
-                <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>MARKETPLACE</Button>
-              </Box>
-              <Box style={{ padding: '12px 12px', }}>
-                <Button style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>GEN 0</Button>
-              </Box>
-            </Box>
-            <Box>
+            </>
+          ) : (
+            <>
+              <Container style={{ maxWidth: '1329px', padding: '0px' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+                    <Box style={{ padding: '16px 12px' }}>
+                      <img src={"head_logo.png"} />
+                    </Box>
+                    <Box style={{ padding: '12px 12px', }}>
+                      <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>HOME</Button>
+                    </Box>
+                    <Box style={{ padding: '12px 12px', }}>
+                      <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>MINTING</Button>
+                    </Box>
+                    <Box style={{ padding: '12px 12px', }}>
+                      <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>STAKING</Button>
+                    </Box>
+                    <Box style={{ padding: '12px 12px', }}>
+                      <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>MARKETPLACE</Button>
+                    </Box>
+                    <Box style={{ padding: '12px 12px', }}>
+                      <Button style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>GEN 0</Button>
+                    </Box>
+                  </Box>
+                  <Box>
+                    {!wallet.connected ? (
+                      <ConnectButton>Connect Wallet</ConnectButton>
+                    ) : (
+                      <></>
+                    )}
+                  </Box>
+                </Box>
+              </Container>
+            </>
+          )
+        }
+      </Box >
+
+      {
+        matches ? (
+          <>
+            <Box style={{ textAlign: 'center' }}>
               {!wallet.connected ? (
-                <ConnectButton>Connect Wallet</ConnectButton>
+                <ConnectButton style={{ width: '70%', margin: '10px 0px' }}>Connect Wallet</ConnectButton>
               ) : (
                 <></>
               )}
             </Box>
-          </Box>
-        </Container>
-      </Box>
+          </>
+        ) : (
+          <></>
+        )
+      }
+
       <Box style={{
-        backgroundImage: "url(main_bg.png)",
+        backgroundImage: matches ? "url(main_bg_mobile.png)" : "url(main_bg.png)",
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        minHeight: '936px',
+        minHeight: matches ? '648px' : '936px',
       }}>
-        <Container style={{ maxWidth: '1329px', paddingTop: '434px' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-            <Box style={{ textAlign: 'center' }}>
-              <Typography style={{ color: 'white', fontFamily: 'SPRAY LETTERS', fontSize: '28px' }}>MINTED NFTS</Typography>
-              <Typography style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: '64px', lineHeight: '100%' }}>{candyMachine && (`${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`)}</Typography>
-            </Box>
-            <Box></Box>
-            <Box style={{ textAlign: 'center' }}>
-              <Typography style={{ color: 'white', fontFamily: 'SPRAY LETTERS', fontSize: '28px' }}>MINT PRICE</Typography>
-              <Typography style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: '64px', lineHeight: '100%' }}>
-                {candyMachine && (
-                  <>
-                    {
-                      isWhitelistUser && discountPrice
-                        ? `${formatNumber.asNumber(discountPrice)}$SOL`
-                        : `${formatNumber.asNumber(candyMachine.state.price)}$SOL`
-                    }
-                  </>
-                )}
-              </Typography>
-              <Typography style={{ color: 'white', fontSize: '20px' }}>Excluding GAS FEES</Typography>
-              
-              <MintButton
-                candyMachine={candyMachine}
-                isMinting={isUserMinting}
-                setIsMinting={val => setIsUserMinting(val)}
-                onMint={onMint}
-                isActive={
-                  isActive ||
-                  (isPresale && isWhitelistUser && isValidBalance)
-                }
-              />
-            </Box>
-          </Box>
+        <Container style={{ maxWidth: matches ? '336px' : '1329px', paddingTop: matches ? '' : '434px' }}>
+          {
+            matches ? (
+              <>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', pt: 5 }}>
+                  <Box style={{ textAlign: 'left' }}>
+                    <Typography style={{ color: 'white', fontFamily: 'SPRAY LETTERS', fontSize: matches ? '16px' : '28px' }}>REMAINING TIME</Typography>
+                    <Typography style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: matches ? '42px' : '64px', lineHeight: '100%' }}>00:00:00</Typography>
+                  </Box>
+                  <Box style={{ textAlign: 'right' }}>
+                    <Typography style={{ color: 'white', fontFamily: 'SPRAY LETTERS', fontSize: matches ? '16px' : '28px' }}>MINTED NFTS</Typography>
+                    <Typography style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: matches ? '42px' : '64px', lineHeight: '100%' }}>{candyMachine && (`${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`)}</Typography>
+                  </Box>
+                </Box>
+              </>
+            ) : (
+              <>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <Box style={{ textAlign: 'center' }}>
+                    <Typography style={{ color: 'white', fontFamily: 'SPRAY LETTERS', fontSize: '28px' }}>MINTED NFTS</Typography>
+                    <Typography style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: '64px', lineHeight: '100%' }}>{candyMachine && (`${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`)}</Typography>
+                  </Box>
+                  <Box></Box>
+                  <Box style={{ textAlign: 'center' }}>
+                    <Typography style={{ color: 'white', fontFamily: 'SPRAY LETTERS', fontSize: '28px' }}>MINT PRICE</Typography>
+                    <Typography style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: '64px', lineHeight: '100%' }}>
+                      {candyMachine && (
+                        <>
+                          {
+                            isWhitelistUser && discountPrice
+                              ? `${formatNumber.asNumber(discountPrice)}$SOL`
+                              : `${formatNumber.asNumber(candyMachine.state.price)}$SOL`
+                          }
+                        </>
+                      )}
+                    </Typography>
+                    <Typography style={{ color: 'white', fontSize: '20px' }}>Excluding GAS FEES</Typography>
+
+                    <MintButton
+                      candyMachine={candyMachine}
+                      isMinting={isUserMinting}
+                      setIsMinting={val => setIsUserMinting(val)}
+                      onMint={onMint}
+                      isActive={
+                        isActive ||
+                        (isPresale && isWhitelistUser && isValidBalance)
+                      }
+                    />
+                  </Box>
+                </Box>
+              </>
+            )
+          }
         </Container>
       </Box>
 
       <Box style={{ background: '#172334' }} sx={{ pt: 5, pb: 5 }}>
-        <Container style={{ maxWidth: '1329px', padding: '0px' }}>
+        <Container style={{ maxWidth: matches ? '336px' : '1329px', padding: '0px' }}>
           <Snackbar
             open={alertState.open}
             autoHideDuration={
@@ -575,14 +634,14 @@ const Home = (props: HomeProps) => {
             </Alert>
           </Snackbar>
           <Box>
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: 'flex', flexDirection: matches ? 'column' : 'row' }} style={{ textAlign: matches ? 'center' : 'left' }}>
               <Typography style={{ color: 'white', fontSize: '20px' }}>CHIMP BASTARDS GEN 0 MINT:</Typography>
               <Typography style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: '50px', lineHeight: '30%' }}>TROOP PASS!</Typography>
             </Box>
 
             <Grid container>
               <Grid item md={6} sm={6} xs={12}>
-                <Box sx={{ pr: 5 }}>
+                <Box sx={{ pr: matches ? 0 : 5 }}>
                   <Box sx={{ mt: 3 }}>
                     <Typography style={{ color: 'white', fontSize: '16px' }}>Before we launch our main collection, we will be putting out a Gen 0 collection first. The Gen 0 mint will consist of 555 Troop Passes. All of which will be packed with utilities. Among the utilities will include but will not be limited to the following:</Typography>
                   </Box>
@@ -598,7 +657,7 @@ const Home = (props: HomeProps) => {
                 </Box>
               </Grid>
               <Grid item md={6} sm={6} xs={12}>
-                <Box>
+                <Box style={{ display: matches ? 'none' : '' }}>
                   <Box sx={{ mt: 3 }}>
                     <Typography style={{ color: '#352e63', fontSize: '16px' }}>-Holders will have an exclusive role which will have special privileges within the community</Typography>
                   </Box>
