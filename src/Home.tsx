@@ -518,7 +518,7 @@ const Home = (props: HomeProps) => {
                       <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>STAKING</Button>
                     </Box>
                     <Box style={{ padding: '12px 12px', }}>
-                      <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>MARKETPLACE</Button>
+                      <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }} onClick={() => window.open("https://chimp-marketplace.herokuapp.com/", "_blank")}>MARKETPLACE</Button>
                     </Box>
                     <Box style={{ padding: '12px 12px', }}>
                       <Button style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>GEN 0</Button>
