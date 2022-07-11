@@ -12,14 +12,13 @@ import {
   removeAccountChangeListener,
 } from '@identity.com/solana-gateway-ts';
 
+{/* <Button style={{ backgroundColor: '#ff5534', fontSize: '24px', padding: '0px 40px', margin: '8px 0px' }}>MINT</Button> */}
+
 export const CTAButton = styled(Button)`
-  width: 100%;
-  height: 60px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  background: linear-gradient(180deg, #604ae5 0%, #813eee 100%);
-  color: white;
-  font-size: 16px;
+  padding: 0px 4px;
+  background-color: #ff5534;
+  margin: 8px 0px;
+  font-size: 24px;
   font-weight: bold;
 `; // add your own styles here
 
