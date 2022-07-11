@@ -3,6 +3,11 @@
   src: url('fonts/AMSTERDAM.TTF');
 }
 
+@font-face {
+  font-family: 'SPRAY LETTERS';
+  src: url('fonts/SPRAY LETTERS.OTF');
+}
+
 body {
   background: #000000;
   margin: 0;

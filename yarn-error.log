@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @types/react-lazy-load-image-component
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @solana/wallet-adapter-react
 
 PATH: 
   C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\Users\bstar\.local\share\solana\install\active_release\bin;C:\Users\bstar\AppData\Local\Microsoft\WindowsApps;C:\Users\bstar\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\bstar\AppData\Local\Yarn\bin;C:\Program Files (x86)\Yarn;C:\Program Files\heroku\bin;C:\Users\bstar\AppData\Roaming\npm
@@ -42,7 +42,6 @@ npm manifest:
       "react-countdown": "^2.3.2",
       "react-dom": "^17.0.2",
       "react-is": "^16.8.0",
-      "react-lazy-load-image-component": "^1.5.4",
       "react-scripts": "4.0.3",
       "styled-components": "^5.3.1",
       "typescript": "^4.1.2",
@@ -75,15 +74,15 @@ npm manifest:
       ]
     },
     "devDependencies": {
-      "@testing-library/dom": "^7.21.4",
+      "@types/styled-components": "^5.1.14",
       "@testing-library/jest-dom": "^5.11.4",
       "@testing-library/react": "^11.1.0",
       "@testing-library/user-event": "^12.1.10",
       "@types/jest": "^26.0.15",
       "@types/node": "^12.0.0",
       "@types/react": "^17.0.0",
-      "@types/react-dom": "^17.0.0",
-      "@types/styled-components": "^5.1.14"
+      "@testing-library/dom": "^7.21.4",
+      "@types/react-dom": "^17.0.0"
     }
   }
 
@@ -8059,11 +8058,6 @@ Lockfile:
     dependencies:
       lodash._reinterpolate "^3.0.0"
   
-  lodash.throttle@^4.1.1:
-    version "4.1.1"
-    resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
-    integrity sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==
-  
   lodash.truncate@^4.4.2:
     version "4.4.2"
     resolved "https://registry.yarnpkg.com/lodash.truncate/-/lodash.truncate-4.4.2.tgz#5a350da0b1113b837ecfffd5812cbe58d6eae193"
@@ -10171,14 +10165,6 @@ Lockfile:
     version "17.0.2"
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
     integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
-  
-  react-lazy-load-image-component@^1.5.4:
-    version "1.5.4"
-    resolved "https://registry.yarnpkg.com/react-lazy-load-image-component/-/react-lazy-load-image-component-1.5.4.tgz#e75b6520c972b6278a9811876716cdab56e401fb"
-    integrity sha512-PSi9tckzZmiqfYZwS6ke2RoRbICsN5m0qsG6fEjUdQNe5STiJieXLlRuGD3uAASOQPFiKYFSLoueN07nk0uffw==
-    dependencies:
-      lodash.debounce "^4.0.8"
-      lodash.throttle "^4.1.1"
   
   react-refresh@^0.8.3:
     version "0.8.3"

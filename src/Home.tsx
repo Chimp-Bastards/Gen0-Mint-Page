@@ -8,8 +8,7 @@ import Alert from '@material-ui/lab/Alert';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import Button from '@material-ui/core/Button';
 
 import {
   Commitment,
@@ -38,10 +37,8 @@ import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 
 const ConnectButton = styled(WalletDialogButton)`
   width: 100%;
-  height: 60px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  background: linear-gradient(180deg, #604ae5 0%, #813eee 100%);
+  margin-top: 32px;
+  background: #71338c;
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -110,6 +107,8 @@ const Home = (props: HomeProps) => {
             props.candyMachineId,
             connection,
           );
+
+          console.log(cndy)
           let active =
             cndy?.state.goLiveDate?.toNumber() < new Date().getTime() / 1000;
           let presale = false;
@@ -484,18 +483,64 @@ const Home = (props: HomeProps) => {
     <>
       <Box style={{ backgroundColor: '#3d3270' }}>
         <Container style={{ maxWidth: '1329px', padding: '0px' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
-            <Box style={{ padding: '16px 0px' }}>
-              <LazyLoadImage src={"head_logo.png"} />
+          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+              <Box style={{ padding: '16px 12px' }}>
+                <img src={"head_logo.png"} />
+              </Box>
+              <Box style={{ padding: '12px 12px', }}>
+                <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>HOME</Button>
+              </Box>
+              <Box style={{ padding: '12px 12px', }}>
+                <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>MINTING</Button>
+              </Box>
+              <Box style={{ padding: '12px 12px', }}>
+                <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>STAKING</Button>
+              </Box>
+              <Box style={{ padding: '12px 12px', }}>
+                <Button style={{ color: 'white', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>MARKETPLACE</Button>
+              </Box>
+              <Box style={{ padding: '12px 12px', }}>
+                <Button style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: '34px' }}>GEN 0</Button>
+              </Box>
             </Box>
             <Box>
-              <Typography>HOME</Typography>
+              {!wallet.connected ? (
+                <ConnectButton>Connect Wallet</ConnectButton>
+              ) : (
+                <></>
+              )}
             </Box>
           </Box>
         </Container>
       </Box>
-      <Container style={{ maxWidth: '1329px', padding: '0px' }}>
-        <Container maxWidth="xs" style={{ position: 'relative' }}>
+      <Box style={{
+        backgroundImage: "url(main_bg.png)",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '936px',
+      }}>
+        <Container style={{ maxWidth: '1329px', paddingTop: '434px' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+            <Box style={{ textAlign: 'center' }}>
+              <Typography style={{ color: 'white', fontFamily: 'SPRAY LETTERS', fontSize: '28px' }}>MINTED NFTS</Typography>
+              <Typography style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: '64px', lineHeight: '100%' }}>0/555</Typography>
+            </Box>
+            <Box></Box>
+            <Box style={{ textAlign: 'center' }}>
+              <Typography style={{ color: 'white', fontFamily: 'SPRAY LETTERS', fontSize: '28px' }}>MINT PRICE</Typography>
+              <Typography style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: '64px', lineHeight: '100%' }}>1$SOL</Typography>
+              <Typography style={{ color: 'white', fontSize: '20px' }}>Excluding GAS FEES</Typography>
+              <Button style={{ backgroundColor: '#ff5534', fontSize: '24px', padding: '0px 40px', margin: '8px 0px' }}>MINT</Button>
+            </Box>
+          </Box>
+        </Container>
+      </Box>
+
+      <Box style={{ background: '#172334' }} sx={{ pt: 5, pb: 5 }}>
+        <Container style={{ maxWidth: '1329px', padding: '0px' }}>
+          {/* <Container maxWidth="xs" style={{ position: 'relative' }}>
           <Paper
             style={{
               padding: 24,
@@ -734,8 +779,53 @@ const Home = (props: HomeProps) => {
           >
             {alertState.message}
           </Alert>
-        </Snackbar>
-      </Container>
+        </Snackbar> */}
+          <Box>
+            <Box sx={{ display: 'flex' }}>
+              <Typography style={{ color: 'white', fontSize: '20px' }}>CHIMP BASTARDS GEN 0 MINT:</Typography>
+              <Typography style={{ color: '#ffba00', fontFamily: 'AMSTERDAM', fontSize: '50px', lineHeight: '30%' }}>TROOP PASS!</Typography>
+            </Box>
+
+            <Grid container>
+              <Grid item md={6} sm={6} xs={12}>
+                <Box sx={{ pr: 5 }}>
+                  <Box sx={{ mt: 3 }}>
+                    <Typography style={{ color: 'white', fontSize: '16px' }}>Before we launch our main collection, we will be putting out a Gen 0 collection first. The Gen 0 mint will consist of 555 Troop Passes. All of which will be packed with utilities. Among the utilities will include but will not be limited to the following:</Typography>
+                  </Box>
+                  <Box sx={{ mt: 3 }}>
+                    <Typography style={{ color: 'white', fontSize: '16px' }}>-Holders of Gen 0 will be airdropped one (1) NFT from the main collection, Chimp Bastards(CB), for free!</Typography>
+                  </Box>
+                  <Box sx={{ mt: 3 }}>
+                    <Typography style={{ color: 'white', fontSize: '16px' }}>-Holders will receive one (1) free airdrop for subsequent collections within the Chimp Bastards ecosystem</Typography>
+                  </Box>
+                  <Box sx={{ mt: 3 }}>
+                    <Typography style={{ color: 'white', fontSize: '16px' }}>-Holders will have first dibs on hte allocations on our first Chimpvestment deal. This means that they will get a free allocation of the first deal that CB will be investing in.</Typography>
+                  </Box>
+                </Box>
+              </Grid>
+              <Grid item md={6} sm={6} xs={12}>
+                <Box>
+                  <Box sx={{ mt: 3 }}>
+                    <Typography style={{ color: '#352e63', fontSize: '16px' }}>-Holders will have an exclusive role which will have special privileges within the community</Typography>
+                  </Box>
+                  <Box sx={{ mt: 3 }}>
+                    <Typography style={{ color: '#352e63', fontSize: '16px' }}>-Holders will get priority to receive a CB merch</Typography>
+                  </Box>
+                  <Box sx={{ mt: 3 }}>
+                    <Typography style={{ color: '#352e63', fontSize: '16px' }}>-The troop pass will have special interactions with your CB NFT</Typography>
+                  </Box>
+                  <Box sx={{ mt: 3 }}>
+                    <Typography style={{ color: '#352e63', fontSize: '16px' }}>-Exclusive access to the Chimp Elite Club in discord, an exclusive club which gets access to the most sought-after cross chain alphas.</Typography>
+                  </Box>
+                  <Box sx={{ mt: 3 }}>
+                    <Typography style={{ color: '#352e63', fontSize: '16px' }}>-Add The Chimp Elite Club will get 20% revenue sharing from the mint proceeds of the main mint and 20% revenue share for the royalities of the main mint, which will be divided among its members on a monthly basis.</Typography>
+                  </Box>
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
+        </Container>
+      </Box>
     </>
   );
 };
