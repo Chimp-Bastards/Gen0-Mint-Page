@@ -3,7 +3,7 @@ import * as anchor from '@project-serum/anchor';
 
 import styled from 'styled-components';
 import { Container, Snackbar } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 import Alert from '@material-ui/lab/Alert';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -633,6 +633,7 @@ const Home = (props: HomeProps) => {
               {alertState.message}
             </Alert>
           </Snackbar>
+
           <Box>
             <Box sx={{ display: 'flex', flexDirection: matches ? 'column' : 'row' }} style={{ textAlign: matches ? 'center' : 'left' }}>
               <Typography style={{ color: 'white', fontSize: '20px' }}>CHIMP BASTARDS GEN 0 MINT:</Typography>
@@ -677,6 +678,12 @@ const Home = (props: HomeProps) => {
               </Grid>
             </Grid>
           </Box>
+        </Container>
+      </Box>
+
+      <Box style={{ background: '#181720', padding: '10px 0px', textAlign: matches ? 'center' : 'left' }}>
+        <Container style={{ maxWidth: matches ? '336px' : '1329px', padding: '0px' }}>
+          <Typography style={{ color: 'white' }}>© 2022 Chimp Bastards. All rights reserved.</Typography>
         </Container>
       </Box>
     </>
