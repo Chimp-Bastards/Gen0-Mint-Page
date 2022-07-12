@@ -659,7 +659,6 @@ const Home = (props: HomeProps) => {
               {alertState.message}
             </Alert>
           </Snackbar>
-
           <Box>
             <Box sx={{ display: 'flex', flexDirection: matches ? 'column' : 'row' }} style={{ textAlign: matches ? 'center' : 'left' }}>
               <Typography style={{ color: 'white', fontSize: '20px' }}>CHIMP BASTARDS GEN 0 MINT:</Typography>
