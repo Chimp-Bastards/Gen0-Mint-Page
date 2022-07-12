@@ -678,7 +678,7 @@ const Home = (props: HomeProps) => {
                     <Typography style={{ color: 'white', fontSize: '16px' }}>-Holders will receive one (1) free airdrop for subsequent collections within the Chimp Bastards ecosystem</Typography>
                   </Box>
                   <Box sx={{ mt: 3 }}>
-                    <Typography style={{ color: 'white', fontSize: '16px' }}>-Holders will have first dibs on hte allocations on our first Chimpvestment deal. This means that they will get a free allocation of the first deal that CB will be investing in.</Typography>
+                    <Typography style={{ color: 'white', fontSize: '16px' }}>-Holders will have first dibs on the allocations on our first Chimpvestment deal. This means that they will get a free allocation of the first deal that CB will be investing in.</Typography>
                   </Box>
                 </Box>
               </Grid>
