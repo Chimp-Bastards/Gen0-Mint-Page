@@ -65,7 +65,6 @@ export const MintButton = ({
         webSocketSubscriptionId,
       );
       await onMint();
-
       setClicked(false);
       setVerified(false);
     };
